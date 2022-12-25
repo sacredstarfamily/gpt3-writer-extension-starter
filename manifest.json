@@ -1,5 +1,5 @@
 {
-  "name": "GPT-3 Writer",
+  "name": "themiracle | blog poster",
   "description": "Write a blog post in the style of your favorite thinker anywhere!",
   "version": "1.0",
   "manifest_version": 3,
@@ -12,5 +12,16 @@
   "action": {
     "default_popup": "index.html",
     "default_title": "Generate blog post"
-  }
+  },
+  "background": {
+    "service_worker": "scripts/contextMenuServiceWorker.js"
+  },
+  "permissions": ["contextMenus", "tabs", "storage"],
+  "host_permissions": ["https://*/*"],
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["scripts/content.js"]
+    }
+  ]
 }
